@@ -1,0 +1,123 @@
+extends index.pug
+
+block content
+    div.clearfix
+    div.row
+        div(class="col-md-12 col-sm-12 col-xs-12")
+            div.x_panel
+                div.x_title
+                    h2 افزودن مشتری جدید
+                    div.clearfix    
+                div.x_content
+                    form(class="form-horizontal form-label-left",method="POST" , action="/verwalten/regkunde")
+                        div(id="wizard" ,class="form_wizard wizard_horizontal")
+                            ul.wizard_steps
+                                li
+                                    a(href="#step-1")
+                                        span.step_no 1
+                                        span.step_descr  قدم اول
+                                            br
+                                            small   اطلاعات اولیه مشتری
+                                li
+                                    a(href="#step-2")
+                                        span.step_no 2
+                                        span.step_descr  قدم دوم
+                                            br
+                                            small   اطلاعات نماینده
+                                li
+                                    a(href="#step-3")
+                                        span.step_no 3
+                                        span.step_descr  قدم سوم
+                                            br
+                                            small   محدودیت دسترسی
+                            div(id="step-1")
+
+                                div.form-group
+                                    label(class="control-label col-md-3 col-sm-3 col-xs-12") نوع
+                                    div(class="col-md-6 col-sm-6 col-xs-12")
+                                        div( id="gender", class="btn-group" ,data-toggle="buttons")
+                                            label(class="btn btn-default" ,data-toggle-class="btn-primary" ,data-toggle-passive-class="btn-default") دانشگاهی
+                                                input(type="radio" ,name="type_kunde" ,value="0")
+                                            label(class="btn btn-primary" ,data-toggle-class="btn-primary" , data-toggle-passive-class="btn-default")   آموزشگاه 
+                                                input(type="radio" ,name="type_kunde", value="1")
+                                div.form-group
+                                    label(class="control-label col-md-3 col-sm-3 col-xs-12" ,for="first-name") نام مشتری
+                                    div(class="col-md-6 col-sm-6 col-xs-12")    
+                                        input(type="text" ,id="first-name", name="kundename"  , class="form-control col-md-7 col-xs-12")            
+                                div.form-group
+                                    label(class="control-label col-md-3 col-sm-3 col-xs-12" ,for="first-name") شماره ثابت
+                                    div(class="col-md-6 col-sm-6 col-xs-12")    
+                                        input(type="text" ,id="first-name",name="phone" , class="form-control col-md-7 col-xs-12") 
+                                div.form-group
+                                    label(class="control-label col-md-3 col-sm-3 col-xs-12" ,for="first-name") آدرس
+                                    div(class="col-md-6 col-sm-6 col-xs-12")    
+                                        input(type="text" ,id="first-name",name="address" , class="form-control col-md-7 col-xs-12")
+                   
+                            div(id="step-2")    
+                                div.form-group
+                                    label(class="control-label col-md-3 col-sm-3 col-xs-12" ,for="first-name") نام 
+                                    div(class="col-md-6 col-sm-6 col-xs-12")    
+                                        input(type="text" ,id="first-name" ,name="name" , class="form-control col-md-7 col-xs-12")
+                                div.form-group
+                                    label(class="control-label col-md-3 col-sm-3 col-xs-12" ,for="first-name")   نام خانوادگی 
+                                    div(class="col-md-6 col-sm-6 col-xs-12")    
+                                        input(type="text" ,id="first-name" ,name="family" , class="form-control col-md-7 col-xs-12")
+                                
+                                div.form-group
+                                    label(class="control-label col-md-3 col-sm-3 col-xs-12" ,for="first-name")  موبایل 
+                                    div(class="col-md-6 col-sm-6 col-xs-12")    
+                                        input(type="text" ,id="first-name" ,name="mobile" , class="form-control col-md-7 col-xs-12")                                                               
+                                div.form-group
+                                    label(class="control-label col-md-3 col-sm-3 col-xs-12" ,for="first-name")  ایمیل 
+                                    div(class="col-md-6 col-sm-6 col-xs-12")    
+                                        input(type="text" ,id="first-name" ,name="email" , class="form-control col-md-7 col-xs-12")                                      
+                                    span
+                                        small  پسورد یک بار مصرف برای این ایمیل ارسال خواهد شد.
+                            div(id="step-3")
+                                div.form-group
+                                    label(class="control-label col-md-3 col-sm-3 col-xs-12")    محدودیت استفاده
+                                    div(class="col-md-9 col-sm-9 col-xs-12")  
+                                        div(class="") 
+                                            label
+                                                input(type="checkbox",name="canbeexpired",value="1", class="js-switch")
+                                div.well
+
+                                    div.form-group
+                                        label(class="control-label col-md-3 col-sm-3 col-xs-12")    تاریخ شروع
+                                        div(class="col-md-3 col-sm-3 col-xs-6")
+                                            input(type="text",name="startTime" ,class="form-control has-feedback-left" , id="single_cal1" placeholder="First Name",aria-describedby="inputSuccess2Status")
+                                            span(class="fa fa-calendar-o form-control-feedback left",aria-hidden="true")
+                                            span(id="inputSuccess2Status", class="sr-only") (success)
+
+                                    div.form-group
+                                        label(class="control-label col-md-3 col-sm-3 col-xs-12")    تاریخ پایان
+                                        div(class="col-md-3 col-sm-3 col-xs-6")
+                                            input(type="text",name="endTime" ,class="form-control has-feedback-left" , id="single_cal2" placeholder="First Name",aria-describedby="inputSuccess3Status")
+                                            span(class="fa fa-calendar-o form-control-feedback left",aria-hidden="true")
+                                            span(id="inputSuccess3Status", class="sr-only") (success)
+
+                                div.form-group
+                                    label(class="control-label col-md-3 col-sm-3 col-xs-12")    محدودیت IP
+                                    div(class="col-md-9 col-sm-9 col-xs-12")  
+                                        div(class="") 
+                                            label
+                                                input(type="checkbox", class="js-switch" , name="ipRestrict" , value="1")
+                                div.well   
+                                    div.form-group
+                                        label(class="control-label col-md-3 col-sm-3 col-xs-12" ,for="first-name")  رنج ip 
+                                        div(class="col-md-6 col-sm-6 col-xs-12")    
+                                            input(type="text" ,id="first-name" ,name="ipRange" , class="form-control col-md-7 col-xs-12")                                      
+                                        span
+                                            small  example: 192.168.1 - 192.168.1.255      
+                                div.form-group
+                                    label(class="control-label col-md-3 col-sm-3 col-xs-12")    محدودیت ساعات روزانه
+                                    div(class="col-md-9 col-sm-9 col-xs-12")  
+                                        div(class="") 
+                                            label
+                                                input(type="checkbox",name="timeRestrict" , value="1", class="js-switch")
+                                div.well   
+                                    div.form-group
+                                        label(class="control-label col-md-3 col-sm-3 col-xs-12" ,for="first-name")  تعیین ساعت 
+                                        div(class="col-md-9 col-sm-9 col-xs-12 grid_slider")    
+                                            input(type="text", ,name="timeRange",class="range_min_max", value="")                                                    
+                                

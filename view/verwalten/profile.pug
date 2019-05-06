@@ -1,0 +1,51 @@
+extends index.pug
+
+block content
+    div.clearfix
+    div.row
+        div(class="col-md-12 col-sm-12 col-xs-12")
+            div.x_panel
+                div.x_title
+                    h2 #{data.name} #{data.family}
+                        small #{data.kunde_id[0].kundename}
+                    div.clearfix
+                div.x_content
+                    div.col-md-3.col-sm-3.col-xs-12.profile_left
+                        div.profile_img
+                            div(id="crop-avatar")
+                                img(class="img-responsive avatar-view"
+                                         ,src="/public/images/People_512.png"
+                                         ,alt="Avatar"
+                                         ,title="Change the avatar")
+                        br
+                        ul.list-unstyled.user_data 
+                            li
+                                i.fa.fa-flag.user-profile-icon
+                                |   #{showAclLabel(data.acl)}
+                            li
+                                i.fa.fa-bell.user-profile-icon
+                                |   وضعیت : #{showStatusLabale(data.status)}
+                            li
+                                i.glyphicon.glyphicon-envelope.user-profile-icon
+                                |   #{data.email}
+                            li
+                                i.fa.fa-phone.user-profile-icon
+                                |   #{data.mobile}
+                            li
+                                i.fa.fa-history.user-profile-icon
+                                |   آخرین ورود :  #{JDate.toJalali(data.last_login)}
+                            li
+                                i.fa.fa-flash.user-profile-icon
+                                |   تاریخ عضویت :  #{JDate.toJalali(data.create_at)}
+                            br 
+                            a(class="btn btn-warning")
+                                i.glyphicon.glyphicon-eye-close.sm-right-xs
+                                | &nbsp; غیر فعال 
+                            br 
+                            a(class="btn btn-danger")
+                                i.glyphicon.glyphicon-trash.sm-right-xs
+                                | &nbsp; حذف    
+                    div.col-md-9.col-sm-9.col-xs-12         
+                        div.profile_title
+                            div.col-md-6
+                                h3 گزارش فعالیت       

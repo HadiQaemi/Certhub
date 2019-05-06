@@ -1,0 +1,192 @@
+doctype html
+html
+    head
+        meta(http-equiv="Content-Type" ,content="text/html; charset=UTF-8")
+        meta(charset="utf-8")
+        meta( http-equiv="X-UA-Compatible" content="IE=edge")
+        meta(name="viewport" ,content="width=device-width, initial-scale=1")
+        title مدیریت سیستم
+        link(rel="icon" ,  href="/public/images/favicon.ico", type="image/ico")
+        link(href="/public/vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet")
+        link(href="/public/vendors/bootstrap-rtl/dist/css/bootstrap-rtl.min.css", rel="stylesheet")
+        link(href="/public/vendors/font-awesome/css/font-awesome.min.css" ,rel="stylesheet")
+        link(href="/public/vendors/nprogress/nprogress.css" ,rel="stylesheet")
+        link(href="/public/vendors/bootstrap-progressbar/css/bootstrap-progressbar-3.3.4.min.css", rel="stylesheet")
+        link(href="/public/vendors/iCheck/skins/flat/green.css", rel="stylesheet")
+        link(href="/public/vendors/bootstrap-daterangepicker/daterangepicker.css", rel="stylesheet")
+        link(href="/public/css/custom.min.css" ,rel="stylesheet")
+        link(href="/public/vendors/google-code-prettify/bin/prettify.min.css" ,rel="stylesheet")
+        link(href="/public/vendors/google-code-prettify/bin/prettify.min.css" ,rel="stylesheet")
+        link(href="/public/vendors/select2/dist/css/select2.min.css" ,rel="stylesheet")
+        link(href="/public/vendors/switchery/dist/switchery.min.css" ,rel="stylesheet")
+        link(href="/public/vendors/starrr/dist/starrr.css" ,rel="stylesheet")
+        link(href="/public/vendors/normalize-css/normalize.css" ,rel="stylesheet")
+        link(href="/public/vendors/ion.rangeSlider/css/ion.rangeSlider.css" ,rel="stylesheet")
+        link(href="/public/vendors/ion.rangeSlider/css/ion.rangeSlider.skinFlat.css" ,rel="stylesheet")
+        link(href="/public/vendors/datatables.net-bs/css/dataTables.bootstrap.min.css" ,rel="stylesheet")
+        link(href="/public/vendors/datatables.net-buttons-bs/css/buttons.bootstrap.min.css" ,rel="stylesheet")
+        link(href="/public/vendors/datatables.net-fixedheader-bs/css/fixedHeader.bootstrap.min.css" ,rel="stylesheet")
+        link(href="/public/vendors/datatables.net-responsive-bs/css/responsive.bootstrap.min.css" ,rel="stylesheet")
+        link(href="/public/vendors/datatables.net-scroller-bs/css/scroller.bootstrap.min.css" ,rel="stylesheet")
+
+    body(class="nav-md")
+        div(class="container body")
+            div(class="main_container")
+                div(class="col-md-3 left_col hidden-print")
+                    div(class="left_col scroll-view")
+                        div(class="navbar nav_title" ,style="border: 0;")
+                            a(href="index.html" ,class="site_title")
+                                i(class="fa fa-paw")
+                                    span()
+                                        | Gentelella Alela!
+                        div(class="clearfix")            
+                        br()
+                        //- sidebar menu
+                        div(id="sidebar-menu" ,class="main_menu_side hidden-print main_menu")     
+                            div(class="menu_section")
+                                h3() مدیریت سامانه دانش آموختگان
+                                ul(class="nav side-menu")
+                                    li
+                                        a
+                                            i(class="fa fa-dashboard")
+                                            | پیشخوان
+  
+                                    li
+                                        a
+                                            i(class="fa fa-graduation-cap")
+                                            | مدارک 
+                                            span(class="fa fa-chevron-down")
+                                        ul(class="nav child_menu")
+                                            li
+                                                a(href='/system/regschuler')  ثبت مدرک جدید   
+                                            li
+                                                a(href='/system/regschulers')  ثبت گروهی مدارک    
+                                                    small csv   
+                                            li
+                                                a(href='/verwalten/listkunde')  مدیریت مدارک
+                                            li
+                                                a(href='/verwalten/listkunde')  لیست رشته ها 
+                                    li
+                                        a
+                                            i(class="fa fa-user")
+                                            | کاربران
+                                            span(class="fa fa-chevron-down")
+                                        ul(class="nav child_menu")
+                                            li
+                                                a(href='/system/reguser')  افزودن کاربر جدید   
+                                            li
+                                                a(href='/verwalten/listmenchen')  مدیریت کاربران
+                                    li
+                                        a
+                                            i(class="fa fa-bar-chart-o")
+                                            | گزارشات
+                                            span(class="fa  fa-chevron-down")
+                                        ul(class="nav child_menu") 
+                                            li
+                                                a(href='#')   کاربران                         
+                                            li
+                                                a(href='#')   بازدیدکنندگان
+                                            li
+                                                a(href='#')   اشکالات
+                                            li
+                                                a(href='#')   مدارک  
+                                    li
+                                        a
+                                            i(class="fa fa-bug")
+                                            | اشکالات                                                                     
+                                    li
+                                        a
+                                            i(class="fa fa-support")
+                                            | تیکت 
+                        
+                            //-menu footer buttons
+                            div(class="sidebar-footer hidden-small")
+                                a(data-toggle="tooltip" , data-placement="top", title="تنظیمات")   
+                                    span(class="glyphicon glyphicon-cog" ,aria-hidden="true")   
+                                a(data-toggle="tooltip" , data-placement="top" , title="تمام صفحه" , onclick="toggleFullScreen();")  
+                                    span(class="glyphicon glyphicon-fullscreen", aria-hidden="true")
+                                a(data-toggle="tooltip" ,  data-placement="top" ,  title="قفل"  , class="lock_btn")
+                                    span(class="glyphicon glyphicon-eye-close" ,  aria-hidden="true")  
+                                a(data-toggle="tooltip" , data-placement="top" ,  title="خروج"  , href="login.html")
+                                    span(class="glyphicon glyphicon-off" , aria-hidden="true")  
+                //- top navigation
+                div(class="top_nav hidden-print")
+                    div(class="nav_menu")
+                        nav      
+                            div(class="nav toggle")
+                                a(id="menu_toggle")
+                                    i(class="fa fa-bars")
+                            ul(class="nav navbar-nav navbar-right")
+                                li
+                                    a(href="javascript:;" , class="user-profile dropdown-toggle" , data-toggle="dropdown" , aria-expanded="false")
+                                        img(src="images/img.jpg",  alt="")
+                                        | amir fatemi
+                                        span(class="fa fa-angle-down")
+                                    ul(class="dropdown-menu dropdown-usermenu pull-right")
+                                        li
+                                            a(href="javascript:;")  نمایه
+                                        li
+                                            a(href="javascript:;")   تنظیمات
+                                            
+                //- end top navigation  
+                //- header content
+            //- page content 
+            div(class="right_col" ,role="main")    
+                div
+                    block content
+                    
+
+            footer.hidden-print
+                div.pull-left
+                    |    SENA CertHub 0.1 - سامانه های نامتمرکز ایران
+
+                div.clearfix
+
+            div#lock_screen
+                table
+                    tr 
+                        td
+                            div.clock
+                            span.unlock
+                                span(class="fa-stack fa-5x")
+                                    i(class="fa fa-square-o fa-stack-2x fa-inverse") 
+                                    i(id="icon_lock", class="fa fa-lock fa-stack-1x fa-inverse")   
+
+
+
+
+        script(src="/public/vendors/jquery/dist/jquery.min.js")   
+        script(src="/public/vendors/bootstrap/dist/js/bootstrap.min.js")
+        script(src="/public/vendors/fastclick/lib/fastclick.js")
+        script(src="/public/vendors/nprogress/nprogress.js")
+        script(src="/public/vendors/bootstrap-progressbar/bootstrap-progressbar.min.js")
+        script(src="/public/vendors/iCheck/icheck.min.js")
+        script(src="/public/vendors/moment/min/moment.min.js")
+        script(src="/public/vendors/bootstrap-daterangepicker/daterangepicker.js")
+        script(src="/public/vendors/jQuery-Smart-Wizard/js/jquery.smartWizard.js")
+        script(src="/public/vendors/switchery/dist/switchery.min.js")
+        script(src="/public/js/custom.min.js")
+        script(src="/public/vendors/ion.rangeSlider/js/ion.rangeSlider.min.js")
+        script(src="/public/vendors/jquery.inputmask/dist/min/jquery.inputmask.bundle.min.js")
+
+        script(src="/public/vendors/datatables.net/js/jquery.dataTables.min.js")
+        script(src="/public/vendors/datatables.net-bs/js/dataTables.bootstrap.min.js")
+        script(src="/public/vendors/datatables.net-buttons/js/dataTables.buttons.min.js")
+        script(src="/public/vendors/datatables.net-buttons-bs/js/buttons.bootstrap.min.js")
+        script(src="/public/vendors/datatables.net-buttons/js/buttons.flash.min.js")
+        script(src="/public/vendors/datatables.net-buttons/js/buttons.html5.min.js")
+        script(src="/public/vendors/datatables.net-buttons/js/buttons.print.min.js")
+        script(src="/public/vendors/jquery.inputmask/dist/min/jquery.inputmask.bundle.min.js")
+        script(src="/public/vendors/datatables.net-fixedheader/js/dataTables.fixedHeader.min.js")
+        script(src="/public/vendors/datatables.net-keytable/js/dataTables.keyTable.min.js")
+        script(src="/public/vendors/datatables.net-responsive/js/dataTables.responsive.min.js")
+        script(src="/public/vendors/datatables.net-responsive-bs/js/responsive.bootstrap.js")
+        script(src="/public/vendors/datatables.net-scroller/js/dataTables.scroller.min.js")
+        script(src="/public/vendors/jszip/dist/jszip.min.js")
+        script(src="/public/vendors/pdfmake/build/pdfmake.min.js")
+        script(src="/public/vendors/pdfmake/build/vfs_fonts.js")
+
+
+                                     
+
+

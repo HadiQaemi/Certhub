@@ -1,0 +1,51 @@
+extends index.pug
+block content
+    div.clearfix
+    div.row
+        div(class="col-md-12 col-sm-12 col-xs-12")
+            div.x_panel
+                div.x_title
+                    h2 افزودن کاربر جدید
+                    div.clearfix    
+                div.x_content
+                    form(method="POST" , action="/system/reguser",class="form-horizontal form-label-left")
+                        if(errors)
+                            div(class="alert alert-danger alert-dismissible fade in text-right", role="alert")
+                            button(type="button", class="close", data-dismiss="alert" ,aria-label="Close")
+                                span(aria-hidden="true") ×
+                            ul
+                                for err in errors
+                                    li=err.msg
+                        div.form-group
+                            label(class="control-label col-md-3 col-sm-3 col-xs-12" ,for="first-name") نام   
+                                <span class="required"> * </span>
+                            div(class="col-md-6 col-sm-6 col-xs-12")
+                                input(type="text" ,name="name", class="form-control col-md-7 col-xs-12", required="required")
+                        div.form-group
+                            label(class="control-label col-md-3 col-sm-3 col-xs-12" ,for="first-name") نام و نام خانوادگی 
+                                <span class="required"> * </span>
+                            div(class="col-md-6 col-sm-6 col-xs-12")
+                                input(type="text" ,name="family", class="form-control col-md-7 col-xs-12",required="required")
+                        div.form-group
+                            label(class="control-label col-md-3 col-sm-3 col-xs-12" ,for="first-name") سطح دسترسی
+                            div(class="col-md-6 col-sm-6 col-xs-12")
+                                select(name="acl",class="form-control")
+                                    option() انتخاب کنید...
+                                    option(value="3") مدیر - امکان افزودن / ویرایش مدارک
+                                    option(value="4") کاربر عادی - فقط مشاهده
+
+                        div.form-group
+                            label(class="control-label col-md-3 col-sm-3 col-xs-12" ,for="first-name") شماره موبایل 
+                            div(class="col-md-6 col-sm-6 col-xs-12")
+                                input(type="text" ,name="mobile", class="form-control col-md-7 col-xs-12")      
+                        div.form-group
+                            label(class="control-label col-md-3 col-sm-3 col-xs-12" ,for="first-name") ایمیل
+                                <span class="required"> * </span>
+                            div(class="col-md-6 col-sm-6 col-xs-12")
+                                input(type="email",name="email",  class="form-control col-md-7 col-xs-12" ,required="required")
+                                span
+                                    small  پسورد یک بار مصرف برای این ایمیل ارسال خواهد شد.                       
+                        div.ln_solid
+                        div.form-group
+                            div(class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3")
+                            button(type="submit" , class="btn btn-success") ثبت درخواست

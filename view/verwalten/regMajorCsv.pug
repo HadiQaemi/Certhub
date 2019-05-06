@@ -1,0 +1,15 @@
+extends index.pug
+block content
+    div.clearfix
+    div.row
+        div(class="col-md-12 col-sm-12 col-xs-12")
+            div.x_panel
+                div.x_title
+                    h2 افزودن رشته جدید CSV
+                    div.clearfix    
+                div.x_content
+                    p 
+                    |   چند فایل را به جعبه زیر برای بارگیری چندگانه بکشید یا برای انتخاب فایل ها روی آن کلیک کنید.
+                    |        این فقط برای هدف نمایش است، فایل ها به هیچ سرور آپلود نمی شوند.
+                    form(method="POST" ,enctype="multipart/form-data", action="/verwalten/regmajorcsv",class="dropzone" , id="my-awesome-dropzone")
+                        

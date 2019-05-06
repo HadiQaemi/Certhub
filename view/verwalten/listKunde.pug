@@ -1,0 +1,36 @@
+extends index.pug
+
+block content
+    div.clearfix
+    div.row
+        div(class="col-md-12 col-sm-12 col-xs-12")
+            div.x_panel
+                div.x_title
+                    h2 مدیریت مشتریان
+                    div.clearfix
+                div.x_content
+                    table(id="datatable-buttons", class="table table-striped table-bordered")  
+                        thead
+                            tr
+                                th  نام مشتریان
+                                th  نماینده
+                                th  تاریخ شروع
+                                th  عملیات
+                        tbody
+                            each  kunde,i in kundes
+                                tr
+                                    td   #{kunde.kundename}
+                                    td   
+                                        a(href="/verwalten/profile/"+ kunde.userId[0]._id +"/view")
+                                            | #{kunde.userId[0].name} #{kunde.userId[0].family}
+                                    td   #{JDate.toJalali(kunde.create_at)}
+                                    td
+                                        a( href="#",data-toggle="tooltip" ,data-placement="top", title="", data-original-title="حذف ")
+                                            span(class="glyphicon glyphicon-trash")
+                                            | &nbsp&nbsp&nbsp
+                                        a( href="/verwalten/editkunde/"+ kunde._id +"/edit",data-toggle="tooltip" ,data-placement="top", title="", data-original-title="ویرایش ")
+                                            span(class="glyphicon glyphicon-pencil")
+                                            | &nbsp&nbsp&nbsp 
+
+                                        
+

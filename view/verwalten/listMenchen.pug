@@ -1,0 +1,44 @@
+extends index.pug
+
+block content
+    div.clearfix
+    div.row
+        div(class="col-md-12 col-sm-12 col-xs-12")
+            div.x_panel
+                div.x_title
+                    h2 مدیریت کاربران
+                    div.clearfix
+                div.x_content
+                    table(id="datatable-buttons", class="table table-striped table-bordered")  
+                        thead
+                            tr
+                                th  نام 
+                                th  ایمیل
+                                th  نام مشتری
+                                th  سطح دسترسی 
+                                th عملیات
+                        tbody
+                            each  user,i in users
+                                tr
+                                    td   
+                                        a(href="/verwalten/profile/"+ user._id +"/view")
+                                            |   #{user.name} #{user.family}
+                                    td   #{user.email}
+                                    td   #{user.kunde_id[0].kundename}
+                                    td   #{showAclLabel(user.acl)}
+                                    td   
+                                        a(href="#", data-toggle="tooltip" ,data-placement="top", title="", data-original-title="کاربر فعال است ")
+                                            span(class="glyphicon glyphicon-eye-open",)
+                                            | &nbsp&nbsp&nbsp
+                                        a( href="#",data-toggle="tooltip" ,data-placement="top", title="", data-original-title="حذف ")
+                                            span(class="glyphicon glyphicon-trash")
+                                            | &nbsp&nbsp&nbsp
+                                        a( href="#",data-toggle="tooltip" ,data-placement="top", title="", data-original-title="ویرایش ")
+                                            span(class="glyphicon glyphicon-pencil")
+                                            | &nbsp&nbsp&nbsp 
+                                        a( href="#",data-toggle="tooltip" ,data-placement="top", title="", data-original-title="ارسال پیام")
+                                            span(class="glyphicon glyphicon-send")
+
+
+
+

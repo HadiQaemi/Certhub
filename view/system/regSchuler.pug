@@ -1,0 +1,76 @@
+extends index.pug
+block content
+    div.clearfix
+    div.row
+        div(class="col-md-12 col-sm-12 col-xs-12")
+            div.x_panel
+                div.x_title
+                    h2 افزودن مدرک جدید
+                    div.clearfix    
+                div.x_content
+                    form(method="POST" , action="/system/regschuler",class="form-horizontal form-label-left")
+                        if(errors)
+                            div(class="alert alert-danger alert-dismissible fade in text-right", role="alert")
+                            button(type="button", class="close", data-dismiss="alert" ,aria-label="Close")
+                                span(aria-hidden="true") ×
+                            ul
+                                for err in errors
+                                    li=err.msg
+                        div.form-group
+                            label(class="control-label col-md-3 col-sm-3 col-xs-12" ,for="first-name") نام   
+                                <span class="required"> * </span>
+                            div(class="col-md-3 col-sm-3 col-xs-6")
+                                input(type="text" ,name="schuler_farsi_name", class="form-control col-md-2 col-xs-3",placeholder="فارسی",)
+                            div(class="col-md-3 col-sm-3 col-xs-6")
+                                input(type="text" ,name="schuler_eng_name", class="form-control col-md-2 col-xs-3 text-left", placeholder="English",)
+
+                        div.form-group
+                            label(class="control-label col-md-3 col-sm-3 col-xs-12" ,for="first-name") نام و نام خانوادگی 
+                                <span class="required"> * </span>
+                            div(class="col-md-3 col-sm-3 col-xs-6")
+                                input(type="text" ,name="schuler_farsi_family", class="form-control col-md-7 col-xs-12", placeholder="فارسی",)
+                            div(class="col-md-3 col-sm-3 col-xs-6")
+                                input(type="text" ,name="schuler_eng_family", class="form-control col-md-2 col-xs-3 text-left",  placeholder="English",)
+                        div.form-group
+                            label(class="control-label col-md-3 col-sm-3 col-xs-12" ,for="first-name") کد ملی
+                            div(class="col-md-3 col-sm-3 col-xs-6")
+                                input(type="text" ,name="schuler_melicode", class="form-control col-md-7 col-xs-12")      
+                        div.form-group
+                            label(class="control-label col-md-3 col-sm-3 col-xs-12" ,for="first-name") تاریخ تولد  
+                                <span class="required"> * </span>
+                            div(class="col-md-3 col-sm-3 col-xs-46")
+                                input(type="text",name="schuler_birthday",  class="initial-value-type-example form-control" ,data-inputmask="'mask': '9999/99/99'")
+                        div.form-group
+                            label(class="control-label col-md-3 col-sm-3 col-xs-12" ,for="first-name")  رشته
+                            div(class="col-md-3 col-sm-3 col-xs-6")
+                                input(type="text",name="schuler_major",  class="form-control col-md-7 col-xs-12" )
+                        div.form-group
+                            label(class="control-label col-md-3 col-sm-3 col-xs-12" ,for="first-name")  مقطع تحصیلی
+                            div(class="col-md-3 col-sm-3 col-xs-6")
+                                select(name="majortype",class="form-control")
+                                    option() انتخاب کنید...
+                                    option(value="1000") کاردانی
+                                    option(value="2000") کارشناسی
+                                    option(value="3000")  کارشناسی ارشد
+                                    option(value="4000")  دکترا                                   
+                        div.form-group
+                            label(class="control-label col-md-3 col-sm-3 col-xs-12" ,for="first-name")  معدل
+                            div(class="col-md-3 col-sm-3 col-xs-6")
+                                input(type="number", min="0" ,max="20",name="schuler_gpa",  class="form-control col-md-7 col-xs-12" )                       
+
+                        div.form-group
+                            label(class="control-label col-md-3 col-sm-3 col-xs-12" ,for="first-name")  استاد راهنما
+                            div(class="col-md-3 col-sm-3 col-xs-6")
+                                input(type="text",name="schuler_farsi_supervisor",  class="form-control col-md-7 col-xs-12" , placeholder="فارسی")                       
+                            div(class="col-md-3 col-sm-3 col-xs-6")
+                                input(type="text" ,name="schuler_eng_supervisor", class="form-control col-md-2 col-xs-3 text-left",  placeholder="English",)
+
+                        div.form-group
+                            label(class="control-label col-md-3 col-sm-3 col-xs-12" ,for="first-name")  کد دبیرخانه
+                            div(class="col-md-3 col-sm-3 col-xs-6")
+                                input(type="text", name="schuler_serial_code",  class="form-control col-md-7 col-xs-12" )                       
+
+                        div.ln_solid
+                        div.form-group
+                            div(class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3")
+                                 button(type="submit" , class="btn btn-success")  ثبت درخواست

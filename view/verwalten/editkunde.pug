@@ -1,0 +1,44 @@
+extends index.pug
+block content
+    div.clearfix
+    div.row
+        div(class="col-md-12 col-sm-12 col-xs-12")
+            div.x_panel
+                div.x_title
+                    h2 ویرایش اطلاعات 
+                        small #{kundes.kundename}
+                    div.clearfix    
+                div.x_content
+                    form(method="POST" , action="/verwalten/regmenchen",class="form-horizontal form-label-left")
+                        if(errors)
+                            div(class="alert alert-danger alert-dismissible fade in text-right", role="alert")
+                            button(type="button", class="close", data-dismiss="alert" ,aria-label="Close")
+                                span(aria-hidden="true") ×
+                            ul
+                                for err in errors
+                                    li=err.msg
+                        div.form-group
+                            label(class="control-label col-md-3 col-sm-3 col-xs-12" ,for="first-name") نام مشتری   
+                            div(class="col-md-6 col-sm-6 col-xs-12")
+                                input(type="text" ,name="name", class="form-control col-md-7 col-xs-12",value=(kundes.kundename) ? kundes.kundename: "")
+                        div.form-group
+                            label(class="control-label col-md-3 col-sm-3 col-xs-12" ,for="first-name") شماره ثابت
+                            div(class="col-md-6 col-sm-6 col-xs-12")
+                                input(type="text" ,name="family", class="form-control col-md-7 col-xs-12",value=(kundes.phone) ? kundes.phone : "")
+                        div.form-group
+                            label(class="control-label col-md-3 col-sm-3 col-xs-12" ,for="first-name") ادرس
+                            div(class="col-md-6 col-sm-6 col-xs-12")
+                                input(type="text" ,name="mobile", class="form-control col-md-7 col-xs-12",value=(kundes.address) ? kundes.address : "")      
+                        br
+                        br
+                        div.form-group
+                            label(class="control-label col-md-3 col-sm-3 col-xs-12" ,for="first-name")   محدودیت استفاده
+                            div(class="col-md-9 col-sm-9 col-xs-12")  
+                                div(class="") 
+                                    label
+                                        input(type="checkbox",name="canbeexpired",value=(kundes.canbeexpired) ? kundes.canbeexpired : "" , class="js-switch")                      
+                        div.ln_solid
+                        div.form-group
+                            div(class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3")
+                            button(type="submit" , class="btn btn-success") ویرایش
+                            a(href="" , class="btn btn-default")    بازگشت
