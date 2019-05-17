@@ -13,7 +13,6 @@ mongoose.set('useCreateIndex', true);
 
 
 
-var routerme = require('./address');
 app.use(cookieParser());
 app.use(session({ secret: 'G~z52]V{`pS', resave: false, saveUninitialized: true }));
 app.use(passport.initialize());
@@ -21,7 +20,7 @@ app.use(passport.session());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 app.use('/public', express.static('statisch'))
-app.use('/' , routerme);
+app.use(require('./routes'))
 
 app.set("views", "./view/");
 app.set('view engine' , 'pug');
@@ -30,9 +29,7 @@ app.set('view engine' , 'pug');
 
 
 
-app.get('/', function(req,res){
-    res.render('index.pug');
-});
+
 
 
 

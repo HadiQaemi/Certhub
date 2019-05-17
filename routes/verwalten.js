@@ -19,10 +19,10 @@ function fileFilter (req, file, cb){
     }
   }
 
-var User = require('./model/user');
-var agent = require('./model/agent');
-var Kunde = require('./model/kunde');
-var Major = require('./model/major');
+  var User = require('../model/user');
+  var agent = require('../model/agent');
+  var Kunde = require('../model/kunde');
+  var Major = require('../model/major');
 
 
 
@@ -227,7 +227,7 @@ router.post('/reg', [
     })
     newUser.save(function(err,data){
         if(err) throw err;
-        res.redirect('/verwalten/login');     
+        res.redirect('/login');     
     });
 
     var addagent = agent({
@@ -263,10 +263,10 @@ router.post('/reg', [
 
 
 
-router.get('/verwalten/regkunde',function (req,res){
+router.get('/regkunde',function (req,res){
     res.render('verwalten/regKunde');
 });
-router.post('/verwalten/regkunde', [
+router.post('/regkunde', [
     check('name').not().isEmpty().escape().withMessage('نام را وارد کنید'),
     check('email').not().isEmpty().withMessage('ایمیل   را وارد کنید'),
     check('email').isEmail().withMessage('ایمیل را بصورت صحیح وارد کنید'),
@@ -346,7 +346,7 @@ router.post('/verwalten/regkunde', [
                 });
 
 
-                res.redirect('/verwalten/listkunde');     
+                res.redirect('/listkunde');     
             });
             
         });
@@ -355,7 +355,7 @@ router.post('/verwalten/regkunde', [
 });
 
 
-router.get('/verwalten/listkunde',function (req,res){
+router.get('/listkunde',function (req,res){
     Kunde.find({}).select('_id create_at kundename ').populate({
         path:  'userId', 
         model: 'User',
@@ -379,7 +379,7 @@ router.get('/verwalten/listkunde',function (req,res){
 
 });
 
-router.get('/verwalten/editkunde/:id/edit',function (req,res){
+router.get('/editkunde/:id/edit',function (req,res){
     Kunde.findById(req.params.id).select('_id create_at kundename phone address canbeexpired').exec(function(err , kundes){
         if(err) throw err
 
@@ -401,10 +401,10 @@ router.get('/verwalten/editkunde/:id/edit',function (req,res){
 
 
 
-router.get('/verwalten/regmenchen',function (req,res){
+router.get('/regmenchen',function (req,res){
     res.render('verwalten/regMenchen');
 });
-router.post('/verwalten/regmenchen', [
+router.post('/regmenchen', [
     check('name').not().isEmpty().escape().withMessage('نام را وارد کنید'),
     check('family').not().isEmpty().withMessage('نام خانوادگی  را وارد کنید'),
     check('mobile').isMobilePhone().withMessage('شماره همراه را صحیح وارد کنید'),
@@ -445,7 +445,7 @@ router.post('/verwalten/regmenchen', [
         });
 });
 
-router.get('/verwalten/listmenchen',function (req,res){
+router.get('/listmenchen',function (req,res){
     
     User.find({}).select('name family email acl _id').populate({
         path:  'kunde_id', 
@@ -467,11 +467,11 @@ router.get('/verwalten/listmenchen',function (req,res){
     
 });
 
-router.get('/verwalten/regmajorcsv',function (req,res){
+router.get('/regmajorcsv',function (req,res){
     res.render('verwalten/regMajorCsv');
 });
 
-router.post('/verwalten/regmajorcsv', upload.single('file'), function (req, res, next) {
+router.post('/regmajorcsv', upload.single('file'), function (req, res, next) {
     // req.file is the `avatar` file
     // req.body will hold the text fields, if there were any
    // next();
@@ -482,10 +482,10 @@ router.post('/verwalten/regmajorcsv', upload.single('file'), function (req, res,
 
 
 
-router.get('/verwalten/regmajor',function (req,res){
+router.get('/regmajor',function (req,res){
     res.render('verwalten/regMajor');
 });
-router.post('/verwalten/regmajor',[
+router.post('/regmajor',[
     check('majorFarsi').not().isEmpty().escape().withMessage('نام رشته را وارد کنید'),
   ], function(req,res){
     var majortype    = req.body.majortype;
@@ -506,7 +506,7 @@ router.post('/verwalten/regmajor',[
 });
 
 
-router.get('/verwalten/listmajor/:id/view',function (req,res){
+router.get('/listmajor/:id/view',function (req,res){
     Major.find({majortype:{$eq:req.params.id}}).select('_id majorFarsi majorEng majorId status').exec(function(err , majors){
         if(err) throw err
         
@@ -521,19 +521,8 @@ router.get('/verwalten/listmajor/:id/view',function (req,res){
 });
 
 
-router.get('/system/index',function (req,res){
-    res.render('system/index');
-});
 
-
-router.get('/system/regschuler',function (req,res){
-    res.render('system/regSchuler');
-});
-router.post('/system/regschuler',function (req,res){
-   res.send(req.body);
-});
-
-router.get('/verwalten/profile/:id/view',function (req,res){
+router.get('/profile/:id/view',function (req,res){
     User.findById(req.params.id ).select('name family email mobile last_login create_at acl status pic').populate({
         path:  'kunde_id', 
         model: 'Kunde',
@@ -552,47 +541,5 @@ router.get('/verwalten/profile/:id/view',function (req,res){
 });
 
 
-router.get('/system/reguser',function (req,res){
-    res.render('system/regKunde');
-});
-router.post('/system/reguser', [
-    check('name').not().isEmpty().escape().withMessage('نام را وارد کنید'),
-    check('family').not().isEmpty().withMessage('نام خانوادگی  را وارد کنید'),
-    check('email').not().isEmpty().withMessage('ایمیل   را وارد کنید'),
-    check('email').isEmail().withMessage('ایمیل را بصورت صحیح وارد کنید'),
-  ], function(req,res){
-    //add new administrator  
-        var  name     = req.body.name;
-        var  family   = req.body.family;
-        var  mobile   = req.body.mobile;
-        var  email    = req.body.email;
-        var  acl    = req.body.acl;
-        const errors= validationResult(req);
-        if (!errors.isEmpty()) {
-            res.render('system/regKunde' , {
-                errors:errors.array(),
-                name:name,
-                family:family,
-                mobile:mobile,
-                email:email,
-                acl,acl,
-            });
-            return;
-        }
-
-        var newUser = User({
-            name:name,
-            family:family,
-            mobile:mobile,
-            email:email,
-            passtmp:'123',
-            acl: acl,
-            status:true,
-        })
-        newUser.save(function(err,data){
-            if(err) throw err;
-            res.redirect('/system/listuser');     
-        });
-});
 
 module.exports = router;
