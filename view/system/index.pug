@@ -28,6 +28,8 @@ html
         link(href="/public/vendors/datatables.net-fixedheader-bs/css/fixedHeader.bootstrap.min.css" ,rel="stylesheet")
         link(href="/public/vendors/datatables.net-responsive-bs/css/responsive.bootstrap.min.css" ,rel="stylesheet")
         link(href="/public/vendors/datatables.net-scroller-bs/css/scroller.bootstrap.min.css" ,rel="stylesheet")
+        link(rel="stylesheet", type="text/css", href="https://kraaden.github.io/autocomplete/autocomplete.css")
+
 
     body(class="nav-md")
         div(class="container body")
@@ -35,16 +37,15 @@ html
                 div(class="col-md-3 left_col hidden-print")
                     div(class="left_col scroll-view")
                         div(class="navbar nav_title" ,style="border: 0;")
-                            a(href="index.html" ,class="site_title")
-                                i(class="fa fa-paw")
-                                    span()
-                                        | Gentelella Alela!
+                            a(href="#" ,class="site_title")
+                                i(class="glyphicon glyphicon-education")
+                                span()  دانشگاه امام رضا (ع)
+                                    
                         div(class="clearfix")            
                         br()
                         //- sidebar menu
                         div(id="sidebar-menu" ,class="main_menu_side hidden-print main_menu")     
                             div(class="menu_section")
-                                h3() مدیریت سامانه دانش آموختگان
                                 ul(class="nav side-menu")
                                     li
                                         a
@@ -180,6 +181,8 @@ html
         script(src="/public/vendors/jszip/dist/jszip.min.js")
         script(src="/public/vendors/pdfmake/build/pdfmake.min.js")
         script(src="/public/vendors/pdfmake/build/vfs_fonts.js")
+        script(src="https://kraaden.github.io/autocomplete/autocomplete.js")
+        script(src="/public/js/myscript.js")
 
 
                                      

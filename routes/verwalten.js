@@ -476,7 +476,7 @@ router.post('/regmajorcsv', upload.single('file'), function (req, res, next) {
     // req.body will hold the text fields, if there were any
    // next();
    //console.log(req.file);
-   res.json({"filename": req.file.filename, "type": req.file.mimetype});
+   //res.json({"filename": req.file.filename, "type": req.file.mimetype});
 
 })
 

@@ -9,6 +9,7 @@
   "author": "amir",
   "license": "ISC",
   "dependencies": {
+    "autocompleter": "^4.0.2",
     "bcrypt-nodejs": "0.0.3",
     "body-parser": "^1.18.3",
     "cookie-parser": "^1.4.4",

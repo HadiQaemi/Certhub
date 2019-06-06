@@ -6,7 +6,7 @@ var LocalStrategy = require('passport-local').Strategy;
 var JDate = require('jalali-date');
 var multer  = require('multer');
 var upload = multer({ dest: 'statisch/uploads/' , fileFilter: fileFilter,limits: { fileSize: 8 * 1024 * 1024 }})
-
+var autocomplete = require('autocompleter');
 
 function fileFilter (req, file, cb){
     var type = file.mimetype;
@@ -126,8 +126,29 @@ passport.use('local-login',new LocalStrategy({
 
 
 router.get('/index',function (req,res){
-    console.log('test');
     res.render('system/index');
+});
+
+
+router.get('/autocomplete/:id',function (req,res){
+    //console.log(req.params.id);
+    //var search = req.params.id;
+    var search = new RegExp(req.params.id, 'i');
+    //Major.find({majorFarsi: regex}.select('majorFarsi  majorId').limit(10).exec(function(err , majors){
+
+
+
+    //console.log(query);
+    
+    Major.find({majorFarsi:search}).select('majorFarsi  majorId').limit(5).exec(function(err , majors){
+        if(err) throw err
+
+        res.jsonp(majors);
+        
+        
+    });
+    
+    
 });
 
 

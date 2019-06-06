@@ -6,6 +6,7 @@ var mongoose = require('mongoose');
 var passport = require('passport');
 var cookieParser = require('cookie-parser');
 var session = require('express-session');
+var autocomplete = require('autocompleter');
 
 mongoose.connect('mongodb://localhost/certhub',{useNewUrlParser: true});
 mongoose.set('useCreateIndex', true);
